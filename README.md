@@ -60,3 +60,29 @@ We are going to predict the close price of common stocks using the historical pr
 
 * Models:
 	* Recurrent Neural Network: We used recurrent neural networks to predict close prices of stocks. Inputs of the model are open prices, min prices, and max prices of each stock We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
+	* XGBoost Regressor: We use XBG regression to train the data. Inputs of the model are some financial indicators, including various moving averages and moving average convergence divergence signals. We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
+
+#### Regressions Models
+* Recurrent Neural Networks
+	* Structure of the recurrent neural networks: We use 3 layers of neurons and each layer contains 300 neurons. We also normalized our data before we fit the model in order to improve convergence of the model [1]. 
+	* Reasons for choosing Neural Networks as a general tool: Predicting stock price is not easy, especially for non-finance people like us. There are lots of factors that would affect the stock price, for example, dividends, interest rates, etc. Neural Networks are flexible and can reveal hidden patterns and relationships within the data. 
+	* Reasons for choosing RNN: The fact that stock prices change sequentially determine the nature of our data. In financial analysis, each historical price point is useful in predicting the future price. Thus, we should build the neural network that is capable of carrying information from previous stages. RNN outperforms standard neural networks when every piece of previous information should be memorized. Each RNN cell can memorize information from all past states. 
+
+ * XGB Regressor: 
+	* Structure of the XGB regressor: We define different the number of trees, learning rate, and gammas. Then, we choose the best model among a set of models based on the mean square error. The best models for different stocks are not identical, which is what we expected. Instead of having fixed parameters for all stocks, like what we did for those RNN models, we think having a range of parameters would potentially improve the accuracy of models. 
+	*Reasons for choosing XGB regressor: The first reason is based on the computational capacity of our local machines. XGB regressor runs parallely, thus it would be suitable for our relatively large dataset. The second reason relates to the nice statistical feature of the model. The XGB regressor uses boosting techniques, which is good for weak learners.  For stock price analysis, it is really hard to find strong learners and grow an entire tree based on those learners. Thus, one way we can think of is to improve the performances of weak learners in order to improve the accuracy of the data. 
+
+#### Hypothesis (Goal of the Project)
+
+	
+
+
+
+
+
+### References:
+[1] https://stackoverflow.com/questions/43467597/should-i-normalize-my-features-before-throwing-them-into-rnn
+[2] https://www.investopedia.com/terms/c/closingprice.asp 
+
+
+
