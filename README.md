@@ -47,11 +47,11 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 #### Tools & Models Used
-*Tools:
+* Tools:
 * Spark: Manipulate data frames and feature engineering. 
 * SQL (Spark SQL): Find open, close min, max prices of stocks.
 * EMR: Make massive data process and manipulation possible and fast. 
 * S3: Store data
 
 * Models:
-	*Recurrent Neural Network: We used recurrent neural networks to predict close prices of stocks. Inputs of the model are open prices, min prices, and max prices of each stock We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
+	* Recurrent Neural Network: We used recurrent neural networks to predict close prices of stocks. Inputs of the model are open prices, min prices, and max prices of each stock We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
