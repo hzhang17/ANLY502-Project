@@ -13,6 +13,11 @@ Nirvana
 In this project, we are going to predict the closing price of stocks traded on the Deutsche Borse public system. 
 
 ## Code Files
+* [downloadData.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/downloadData.ipynb): use script to download data from Deutsche Borse PDS's S3 bucket.
+* [cleanData.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/cleanData.ipynb): use Spark to clean data and separate data for each stock.
+* [toPandas.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/toPandas.ipynb): convert RDD to pandas dataframe and save files in csv format.
+* [testing.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/testing.ipynb): testing steps for previous notebooks, including failure message for copying data files directly to personal S3, and using Spark SQL to clean and separate data with intermediate data samples.
+
 
 ## Introduction
 We are going to predict the close price of common stocks using the historical price of stocks. The dataset we are going to use is from the Deutsche Börse Public Dataset. The dataset consists of minute-by-minute data of common stocks, bonds, and other derivatives. We will use two models in our project, recurrent neural networks and XGB regressor. We will also compare and contrast between different models. 
@@ -32,7 +37,7 @@ We are going to predict the close price of common stocks using the historical pr
 #### Data Cleaning
 * After we successfully download and re-upload the data to our S3 bucket, we use Spark and SQL to clean the dataset. The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades.
 
-* Since we are going to predict the close price based on historical prices of stocks, we first remove irrelevant variables, ISIN, Currency, Security ID, Traded Volume, and Number of Trades, from the dataset. We also cast the data type of the “Date” variable to remove the trailing “00:00:00” added by Spark for future use. We are mainly focusing on common stocks, so we select all securities with “common stock” as their security types. We will drop any observation with missing values before applying the model. The intermediate steps and data sample will be shown in the file named “cleanData.ipynb”.
+* Since we are going to predict the close price based on historical prices of stocks, we first remove irrelevant variables, ISIN, Currency, Security ID, Traded Volume, and Number of Trades, from the dataset. We also cast the data type of the “Date” variable to remove the trailing “00:00:00” added by Spark for future use. We are mainly focusing on common stocks, so we select all securities with “common stock” as their security types.
 
 * In order to get the open and close prices of each day, we would first extract the hour and minute parts from the Time variable. We then cast the hour and minute into int type. According to the official Xetra website, the trading of common stocks starts from 9:00am to 17:30pm. So we select the data within this time window.
 
