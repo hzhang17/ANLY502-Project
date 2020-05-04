@@ -191,7 +191,7 @@ Table 1. Result Table
 * We would recommend using the RNN model for general purposes because it is more stable. Also, the XGB regressor model is useful for certain industries. 
 
 
-### Future Work and Recommendations for Future Researches
+### Future Works and Recommendations for Future Researchers
 * In order to improve the accuracy of the XGB regressor, it would be helpful trying to set different parameters for different industries. For example, by selecting different moving average values for different industries. 
 * It is beneficial to include more data into the model. We only consider the data from 2018-01-01 to 2019-12-31 in our project because COVID-19 could potentially impact the stock prices. Thus, we would consider collecting more data if there is no pandemic. 
 
