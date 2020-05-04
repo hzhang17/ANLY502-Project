@@ -38,6 +38,7 @@ We are going to predict the close price of common stocks using the historical pr
 * After we successfully download and re-upload the data to our S3 bucket, we use Spark and SQL to clean the dataset. The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades. 
 
 * The data was stored in csv files in the following format: ==========
+
 | ISIN | Mnemonic | SecurityDesc | SecurityType | Currency | SecurityID | Date | Time | StartPrice | MaxPrice | MinPrice | EndPrice | TradedVolume | NumberOfTrades |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | "DE000A2G8183" | "DWNN" | "DEUTSCHE WOHNEN SE NEUE" | "Common stock" | "EUR" | 2889217 | 2018-01-02 | 05:00 | 36.46 | 36.46 | 36.46 | 36.46 | 0 | 1 |
@@ -60,7 +61,9 @@ We are going to predict the close price of common stocks using the historical pr
 * We will find the daily min and max prices for each stock by comparing the minimum and maximum price of each minute for all trading records in a day. The start price will be the start price of the first trading record of that day and the close price will be the close price of the last trading record of that day. 
 
 * The resulting dataset: ==========
+
 | Mnemonic | Date | MaxPrice | MinPrice | StartPrice | EndPrice |
+|:---:|:---:|:---:|:---:|:---:|:---:|
 | AIR | 2018-08-07 | 109.94 | 108.92 | 109.82 | 109.02 |
 | AIR | 2018-08-08 | 109.16 | 107.76 | 109.12 | 107.96 |
 | AIR | 2018-08-09 | 108.82 | 107.72 | 108.18 | 108.82 |
