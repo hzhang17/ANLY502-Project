@@ -53,9 +53,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 * Since we are going to predict the close price based on historical prices of stocks, we first remove irrelevant variables, ISIN, Currency, Security ID, Traded Volume, and Number of Trades, from the dataset. We also cast the data type of the “Date” variable to remove the trailing “00:00:00” added by Spark for future use. We are mainly focusing on common stocks, so we select all securities with “common stock” as their security types.
 
-* In order to get the open and close prices of each day, we would first extract the hour and minute parts from the Time variable. We then cast the hour and minute into int type. According to the official Xetra website, the trading of common stocks starts from 9:00 am to 5:30 pm [3].
-
-. So we select the data within this time window.
+* In order to get the open and close prices of each day, we would first extract the hour and minute parts from the Time variable. We then cast the hour and minute into int type. According to the official Xetra website, the trading of common stocks starts from 9:00 am to 5:30 pm [3]. Thus, we select the data within this time window.
 
 * In order to understand how our models perform differently in different industries, we selected twenty stocks from five of the following industries based on the number trading record. We prefer to select stocks that have more trading records in order to get large samples for our models. 
 	* Heavy industry: Airbus (AIR), Bayerische Motoren Werke (BMW), Volkswagen Group (VOW3)
@@ -76,8 +74,8 @@ We are going to predict the close price of common stocks using the historical pr
 | AIR | 2018-08-28 | 109.18 | 108.02 | 108.02 | 109.02 |
 | AIR | 2018-08-29 | 110.86 | 109.96 | 110.26 | 110.12 |
 
-### Hypothesis (Goal of the Project)
-* Generally speaking, the closing price for a stock or security is considered as the most accurate valuation of the stock until trading resumes on the next trading day [2]. The close price of a stock is a standard benchmark used by investors to track performance of the stock over time [2]. Conventionally, the close price of a stock is the last price during regular trading hours [2]. In our case, the close price is the last price point before 5:30 pm. Though most stocks are traded after-hours, but they are traded in far smaller volumes [2]. Thus, after-hour data are available for common stocks in the original dataset, we will only consider the trades between 9 am to 5:30 pm[3]. 
+### Goal of the Project (Hypothesis)
+* Generally speaking, the closing price for a stock or security is considered as the most accurate valuation of the stock until trading resumes on the next trading day [2]. The close price of a stock is a standard benchmark used by investors to track performance of the stock over time [2]. Conventionally, the close price of a stock is the last price during regular trading hours [2]. In our case, the close price is the last price point before 5:30 pm. Though most stocks are traded after-hours, but they are traded in far smaller volumes [2]. Thus, after-hour data are available for common stocks in the original dataset, we will only consider the trades between 9 am to 5:30 pm [3]. 
 * Though very hard, the stock price is still predictable. Many researches have successfully predicted the closing stock price using historical stock price. There are two major schools of stock analysis, technical analysis and fundamental analysis [4]. Fundamental analysis focuses on using factors that affect business activities of a company, for example, whether the company offers preferred stocks, to determine the value of stock. Another school. Technical analysis uses the price movement of a stock in order to predict the future stock price [4]. In our project, we are going to follow the path of technical analysis and predict the future close price of stock using historical stock price. 
 
 
