@@ -108,32 +108,51 @@ We are going to predict the close price of common stocks using the historical pr
 * We basically have six types of visualization and each of them serves different purposes. We will use plots for BMW as examples in this section. 
 * We first visualize the open, close, minimum, and maximum of prices for each stock on each day. Figure 1 is a price plot we made for BMW.  As we can see in the figure below, stock prices fluctuate a lot. It is not adequate using simple models, for example, linear regression or multiple regression, to predict the closing price based on historical data. This plot justifies the reason why we are using complex models, recurrent neural networks and XGB regressor, in our project.
 
-### Figure 1 goes here!!!
+![Figure 1](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure1.png)
+Figure 1. Stock Price Plot of BMW
+
+
+
 
 * Since we normalized our data before applying the recurrent neural network model, it would be helpful to visualize normalized stock prices. Figure 2 shows the normalized stock prices of BMW. Normalized stock prices and regular stock prices share the same pattern. Thus, normalization will not alter the trend of stock prices. 
 
-### Figure 2 goes here!!!
+![Figure 2](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure2.png)
+
+Figure 2. Normalized Stock Prices for BMW
+
 
 * After we fitted the RNN models, we visualized the actual stock price and the predicted stock price for training, validation, and test sets. Though we will consider the mean square error as our evaluation metric to compare between models, visualization could help us evaluate the model intuitively. As we can see, the RNN model does a decent job in predicting the closing stock price. 
 
-### Figure 3 goes here!!!
+![Figure 3](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure3.png)
+
+Figure 3. RNN Evaluation Plot of BMW
+
 
 * Since the XBG regressor model involves time series analysis, it would be useful to have decomposition plots of closing price on hand. As we can see in Figure 4, there is a downward trend of stock price of BMW. Also, we can see a clear seasonality of closing price, which indicates that our XGB regressor model might be accurate. 
 
-### Figure 4 goes here!!!
+![Figure 4](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure4.png)
+
+Figure 4. Decomposition Plot of BMW Closing Price
+
 
 * We constructed five moving averages, namely, exponential moving average for nine days, simple moving averages for 5, 10, 15, and 20 days. We first visualize the pattern of all moving averages to avoid any extreme pattern or outliers before fitting the XGB regressor model. As shown in Figure 5, all moving averages are smooth. 
 
-### Figure 5 goes here!!!
+![Figure 5](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure5.png)
+
+Figure 5. Moving Averages Plot for BMW
+
 
 * We also calculated the moving average convergence divergence index and its signal. It is helpful to visualize these 2 indicators first. As we can see, both indicators are smooth.
 
-### Figure 6 goes here!!!
+![Figure 6](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure6.png)
+
+Figure 6. MACD Plot of BMW
+
 
 
 ## Results and Conclusions
 ### Evaluation Metrics and Result Validation
-* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the mean square error to evaluation models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
+* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error** to evaluation models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
 * We validate our model on the validation set to get the mean square error. Thus, we can avoid overfitting and other relevant problems. 
 
 ### Result Table by Industry
@@ -167,7 +186,7 @@ We are going to predict the close price of common stocks using the historical pr
 |  BAYN   |      0.004086     |    0.005276    | 
 
 Table 1. Result Table
-* As we can see in the table above, the recurrent neural network model performs relatively well among all companies. It is relatively stable, in other words, its performance does not depend on industry. Also, mean square errors of the RNN model are small numerically. For the XGB regressor  model, it performs well for certain companies and industries. For example, it performs well for the heavy industry, which is the top subsection of the table above. However, it yields large mean square error Amazon and some other companies. 
+* As we can see in the table above, **the recurrent neural network model performs relatively well among all companies**. It is relatively stable, in other words, its performance does not depend on industry. Also, mean square errors of the RNN model are small numerically. For the XGB regressor  model, it performs well for certain companies and industries. For example, it performs well for the heavy industry, which is the top subsection of the table above. However, it yields large mean square error Amazon and some other companies. 
 * The reason why we choose stocks based on industries is that we strongly believe that companies within the same industry will have a similar trend in stock price. As we can see in the table above, both two models perform well for heavy industry and financial industry. It could be the case that these two industries will not be influenced dramatically by external factors. For example, a drastic economic downturn could possibly affect the shopping behavior of ordinary people. However, people still need to go to the bank and save their money in saving accounts. 
 * We would recommend using the RNN model for general purposes because it is more stable. Also, the XGB regressor model is useful for certain industries. 
 
@@ -177,9 +196,9 @@ Table 1. Result Table
 * It is beneficial to include more data into the model. We only consider the data from 2018-01-01 to 2019-12-31 in our project because COVID-19 could potentially impact the stock prices. Thus, we would consider collecting more data if there is no pandemic. 
 
 ### Recommendations to Investors
-* Since we are not professional financial analysts, please DO NOT rely on this report to make any financial decisions!
-* We would recommend using the RNN model to predict the closing price of stock. Also, you can use the XGB regressor model if you intend to invest in heavy industry or financial industry. 
-* Though both models perform relatively better in heavy industry and financial industry, these two industries do not yield high return. In fact, the high-tech and Internet stocks tend to have upwards trends in stock prices. Thus, we would recommend investing in high-tech and Internet companies. 
+* Since we are not professional financial analysts, **please DO NOT rely on this report to make any financial decisions**!
+* We would recommend using the **RNN model to predict the closing price of stock**. Also, you can use the XGB regressor model if you intend to invest in heavy industry or financial industry. 
+* Though both models perform relatively better in heavy industry and financial industry, these two industries do not yield high return. In fact, the high-tech and Internet stocks tend to have upwards trends in stock prices. Thus, **we would recommend investing in high-tech and Internet companies**. 
 
 
 
