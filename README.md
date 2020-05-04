@@ -18,8 +18,8 @@ In this project, we are going to predict the closing price of stocks traded on t
 * [cleanData.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/cleanData.ipynb): use Spark to clean data and separate data for each stock.
 * [toPandas.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/toPandas.ipynb): convert RDD to pandas dataframe and save files in csv format.
 * [testing.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/testing.ipynb): testing steps for previous notebooks, including failure message for copying data files directly to personal S3, and using Spark SQL to clean and separate data with intermediate data samples.
-* [XGBoost_Models](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressor model for each stock (total 20 .ipynb file inside, each with name XGB_{Mnermonic}.ipynb)
-* [RecurrentNeuralNets](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock (total 20 .ipynb file inside, each with name RNN_{Mnermonic}.ipynb)
+* [XGBoost_Models](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressor model for each stock (total 20 .ipynb file inside, each named after the stock's mnemonic in the form XGB_{Mnemonic}.ipynb)
+* [RecurrentNeuralNets](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock (total 20 .ipynb file inside, each named after the stock's mnemonic in the form RNN_{Mnemonic}.ipynb)
 
 
 
@@ -120,7 +120,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 ![Figure 2](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure2.png)
 
-<div align="center">Figure 2. Normalized Stock Prices for BMW</div>
+<div align="center">Figure 2. Normalized Stock Prices of BMW</div>
 
 
 * After we fitted the RNN models, we visualized the actual stock price and the predicted stock price for training, validation, and test sets. Though we will consider the mean square error as our evaluation metric to compare between models, visualization could help us evaluate the model intuitively. As we can see, the RNN model does a decent job in predicting the closing stock price. 
@@ -141,7 +141,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 ![Figure 5](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure5.png)
 
-<div align="center">Figure 5. Moving Averages Plot for BMW</div>
+<div align="center">Figure 5. Moving Averages Plot of BMW</div>
 
 
 * We also calculated the moving average convergence divergence index and its signal. It is helpful to visualize these 2 indicators first. As we can see, both indicators are smooth.
@@ -187,7 +187,9 @@ We are going to predict the close price of common stocks using the historical pr
 | BAS  |       0.011666    |    0.005019    | 
 |  BAYN   |      0.004086     |    0.005276    | 
 
-<div align="center">Table 1. Result Table</div>
+
+
+
 * As we can see in the table above, **the recurrent neural network model performs relatively well among all companies**. It is relatively stable, in other words, its performance does not depend on industry. Also, mean square errors of the RNN model are small numerically. For the XGB regressor  model, it performs well for certain companies and industries. For example, it performs well for the heavy industry, which is the top subsection of the table above. However, it yields large mean square error Amazon and some other companies. 
 * The reason why we choose stocks based on industries is that we strongly believe that companies within the same industry will have a similar trend in stock price. As we can see in the table above, both two models perform well for heavy industry and financial industry. It could be the case that these two industries will not be influenced dramatically by external factors. For example, a drastic economic downturn could possibly affect the shopping behavior of ordinary people. However, people still need to go to the bank and save their money in saving accounts. 
 * We would recommend using the RNN model for general purposes because it is more stable. Also, the XGB regressor model is useful for certain industries. 
@@ -230,7 +232,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 #### Table
-<center>
+<div align="center">
 	
 |  Stock  | MSE (RNN) | MSE(XGB Regressor) |
 |:---:|:---:|:---:|
@@ -259,4 +261,4 @@ We are going to predict the close price of common stocks using the historical pr
 | BAS  |       0.011666    |    0.005019    | 
 |  BAYN   |      0.004086     |    0.005276    |
 
-</center>
+</div>
