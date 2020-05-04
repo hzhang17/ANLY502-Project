@@ -228,8 +228,8 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 #### Table
-
-<div align="center">|  Stock  | MSE (RNN) | MSE(XGB Regressor) |
+<center>
+|  Stock  | MSE (RNN) | MSE(XGB Regressor) |
 |:---:|:---:|:---:|
 |  AIR     |     0.027250         |    30.89319     | 
 |   BMW    |      0.006598     |     0.006795   | 
@@ -254,4 +254,5 @@ We are going to predict the close price of common stocks using the historical pr
 |  |  |
 |  1COV  |    0.019278     |   1412.233   | 
 | BAS  |       0.011666    |    0.005019    | 
-|  BAYN   |      0.004086     |    0.005276    |</div>
+|  BAYN   |      0.004086     |    0.005276    |
+</center>
