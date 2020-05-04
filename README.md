@@ -20,7 +20,7 @@ In this project, we are going to predict the closing price of stocks traded on t
 
 
 ## Introduction
-We are going to predict the close price of common stocks using the historical price of stocks. The dataset we are going to use is from the Deutsche Börse Public Dataset. The dataset consists of minute-by-minute data of common stocks, bonds, and other derivatives. We will use two models in our project, recurrent neural networks and XGB regressor. We will also compare and contrast between different models. 
+We are going to predict the close price of common stocks using the historical price of stocks. The dataset we are going to use is the trading data from the Deutsche Börse Public Dataset. The dataset consists of minute-by-minute data of common stocks, bonds, and other derivatives. We will use two models in our project, recurrent neural networks and XGB regressor. We will also compare and contrast between different models. 
 
 
 ## Methodology
@@ -34,8 +34,17 @@ We are going to predict the close price of common stocks using the historical pr
 * The official document contains the code for accessing the dataset of a specific date, which is using the AWS Command Line Interface with argument “no-sign-request”. However, data of multiple days couldn’t be directly copied to a personal S3 bucket. So we decided to use a script to first download the data of year 2018 and 2019 to our local machine and then upload those data files to our own S3 bucket. 
  
 
-#### Data Cleaning
-* After we successfully download and re-upload the data to our S3 bucket, we use Spark and SQL to clean the dataset. The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades.
+#### Data Cleaning (顺序怪怪的？？)
+* After we successfully download and re-upload the data to our S3 bucket, we use Spark and SQL to clean the dataset. The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades. 
+
+* The data was stored in csv files in the following format: ==========
+| ISIN | Mnemonic | SecurityDesc | SecurityType | Currency | SecurityID | Date | Time | StartPrice | MaxPrice | MinPrice | EndPrice | TradedVolume | NumberOfTrades |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| "DE000A2G8183" | "DWNN" | "DEUTSCHE WOHNEN SE NEUE" | "Common stock" | "EUR" | 2889217 | 2018-01-02 | 05:00 | 36.46 | 36.46 | 36.46 | 36.46 | 0 | 1 |
+| "DE000A2G82Z8" | "BNRN" | "BRENNTAG AG NA O.N. NEUE" | "Common stock" | "EUR" | 2889218 | 2018-01-02 | 52.77 | 52.77 | 52.77 | 52.77 | 0 | 1 |
+| "DE000A2G83A9" | "TEGN" | "TAG IMMOBILIEN AG NEUE" | "Common stock" | "EUR" | 2889219 | 2018-01-02 | 05:00 | 15.84 | 15.84 | 15.84 | 15.84 | 0 | 1 |
+| "DE000A2G83C5" | "CAPN" | "CAPITAL STAGE AG  NEUE" | "Common stock" | "EUR" | 2889220 | 2018-01-02 | 05:00 | 6.462 | 6.462 | 6.462 | 6.462 | 0 | 1 |
+| "DE000A2G83P7" | "MTXN" | "MTU AERO ENGINES NEUE NA" | "Common stock" | "EUR" | 2889221 | 2018-01-02 | 05:00 | 149.4 | 149.4 | 149.4 | 149.4 | 0 | 1 |
 
 * Since we are going to predict the close price based on historical prices of stocks, we first remove irrelevant variables, ISIN, Currency, Security ID, Traded Volume, and Number of Trades, from the dataset. We also cast the data type of the “Date” variable to remove the trailing “00:00:00” added by Spark for future use. We are mainly focusing on common stocks, so we select all securities with “common stock” as their security types.
 
@@ -49,6 +58,14 @@ We are going to predict the close price of common stocks using the historical pr
 	* Health and Chemical: BASF (BAS), Covestro (1COV), Bayer (BAYN)
 
 * We will find the daily min and max prices for each stock by comparing the minimum and maximum price of each minute for all trading records in a day. The start price will be the start price of the first trading record of that day and the close price will be the close price of the last trading record of that day. 
+
+* The resulting dataset: ==========
+| Mnemonic | Date | MaxPrice | MinPrice | StartPrice | EndPrice |
+| AIR | 2018-08-07 | 109.94 | 108.92 | 109.82 | 109.02 |
+| AIR | 2018-08-08 | 109.16 | 107.76 | 109.12 | 107.96 |
+| AIR | 2018-08-09 | 108.82 | 107.72 | 108.18 | 108.82 |
+| AIR | 2018-08-28 | 109.18 | 108.02 | 108.02 | 109.02 |
+| AIR | 2018-08-29 | 110.86 | 109.96 | 110.26 | 110.12 |
 
 
 #### Tools & Models Used
