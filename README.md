@@ -107,7 +107,7 @@ We are going to predict the close price of common stocks using the historical pr
 | ADS |    0.053041      |    882.5451333652707     | 
 |  CON  |      0.018633      |    1536.9848921344576 | 
 |  DAI  |      0.014024      |    170.39798666388413    | 
-|  PHI1 |                     |                     | 
+|  PHI1 |       0.029312     |      0.002827     | 
 |  SIE |     0.011042    |     53.82468243338227    | 
 | | |
 |  ALV     |      0.031557       |      29.37601789103453     | 
