@@ -146,7 +146,7 @@ Figure 5. Moving Averages Plot for BMW
 
 ![Figure 6](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure6.png)
 
-Figure 6. MACD Plot of BMW
+<div align="center">Figure 6. MACD Plot of BMW</div>
 
 
 
@@ -190,6 +190,7 @@ Table 1. Result Table
 * The reason why we choose stocks based on industries is that we strongly believe that companies within the same industry will have a similar trend in stock price. As we can see in the table above, both two models perform well for heavy industry and financial industry. It could be the case that these two industries will not be influenced dramatically by external factors. For example, a drastic economic downturn could possibly affect the shopping behavior of ordinary people. However, people still need to go to the bank and save their money in saving accounts. 
 * We would recommend using the RNN model for general purposes because it is more stable. Also, the XGB regressor model is useful for certain industries. 
 
+## Future Works
 
 ### Future Works and Recommendations for Future Researchers
 * In order to improve the accuracy of the XGB regressor, it would be helpful trying to set different parameters for different industries. For example, by selecting different moving average values for different industries. 
