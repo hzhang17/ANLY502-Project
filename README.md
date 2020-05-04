@@ -201,7 +201,9 @@ Table 1. Result Table
 * Though both models perform relatively better in heavy industry and financial industry, these two industries do not yield high return. In fact, the high-tech and Internet stocks tend to have upwards trends in stock prices. Thus, **we would recommend investing in high-tech and Internet companies**. 
 
 
-
+## Division of Labor
+* Han Zhang: Data collection, data cleaning, writing report, presentation.
+* Jingjie Ma: Data cleaning, models, writing report, presentation.
 	
 
 
