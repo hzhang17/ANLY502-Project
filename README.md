@@ -18,8 +18,8 @@ In this project, we are going to predict the closing price of stocks traded on t
 * [cleanData.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/cleanData.ipynb): use Spark to clean data and separate data for each stock.
 * [toPandas.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/toPandas.ipynb): convert RDD to pandas dataframe and save files in csv format.
 * [testing.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/testing.ipynb): testing steps for previous notebooks, including failure message for copying data files directly to personal S3, and using Spark SQL to clean and separate data with intermediate data samples.
-* [XGB_{Mnermonic}.ipynb](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressors on each stock
-* [RNN_{Mnermonic}.ipynb](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock
+* [XGBoost_Models](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressor model for each stock (total 20 .ipynb file inside)
+* [RecurrentNeuralNets](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock (total 20 .ipynb file inside)
 
 
 
@@ -41,7 +41,7 @@ We are going to predict the close price of common stocks using the historical pr
 #### Data Cleaning 
 * After we successfully download and re-upload the data to our S3 bucket, we use Spark and SQL to clean the dataset.
 
-* The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades. The data was stored in csv files in the following format: ==========
+* The original dataset contains the following 14 variables: ISIN, Mnemonic, SecurityDesc (description),  SecurityType, Currency, SecurityID, Date, Time, StartPrice, MaxPrice, MinPrice, EndPrice, TradedVolume, and NumberOfTrades. The original data were stored in the following format: 
 
 | ISIN | Mnemonic | SecurityDesc | SecurityType | Currency | SecurityID | Date | Time | StartPrice | MaxPrice | MinPrice | EndPrice | TradedVolume | NumberOfTrades |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -64,7 +64,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 * We will find the daily min and max prices for each stock by comparing the minimum and maximum price of each minute for all trading records in a day. The start price will be the start price of the first trading record of that day and the close price will be the close price of the last trading record of that day. 
 
-* The resulting dataset: ==========
+* The final data format is shown as follows:
 
 | Mnemonic | Date | MaxPrice | MinPrice | StartPrice | EndPrice |
 |:---:|:---:|:---:|:---:|:---:|:---:|
