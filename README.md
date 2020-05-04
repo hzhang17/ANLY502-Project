@@ -18,8 +18,8 @@ In this project, we are going to predict the closing price of stocks traded on t
 * [cleanData.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/cleanData.ipynb): use Spark to clean data and separate data for each stock.
 * [toPandas.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/toPandas.ipynb): convert RDD to pandas dataframe and save files in csv format.
 * [testing.ipynb](https://github.com/hzhang17/ANLY502-Project/blob/master/testing.ipynb): testing steps for previous notebooks, including failure message for copying data files directly to personal S3, and using Spark SQL to clean and separate data with intermediate data samples.
-* [XGBoost_Models](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressor model for each stock (total 20 .ipynb file inside)
-* [RecurrentNeuralNets](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock (total 20 .ipynb file inside)
+* [XGBoost_Models](https://github.com/hzhang17/ANLY502-Project/tree/master/XGBoost_Models): XGB regressor model for each stock (total 20 .ipynb file inside, each with name XGB_{Mnermonic}.ipynb)
+* [RecurrentNeuralNets](https://github.com/hzhang17/ANLY502-Project/tree/master/RecurrentNeuralNets): Recurrent Neural Networks on each stock (total 20 .ipynb file inside, each with name RNN_{Mnermonic}.ipynb)
 
 
 
@@ -95,7 +95,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 ### Regressions Models
-* Recurrent Neural Networks
+* Recurrent Neural Networks (RNN)
 	* Structure of the recurrent neural networks: We use 3 layers of neurons and each layer contains 300 neurons. We also normalized our data before we fit the model in order to improve convergence of the model [1]. 
 	* Reasons for choosing Neural Networks as a general tool: Predicting stock price is not easy, especially for non-finance people like us. There are lots of factors that would affect the stock price, for example, dividends, interest rates, etc. Neural Networks are flexible and can reveal hidden patterns and relationships within the data. 
 	* Reasons for choosing RNN: The fact that stock prices change sequentially determine the nature of our data. In financial analysis, each historical price point is useful in predicting the future price. Thus, we should build the neural network that is capable of carrying information from previous stages. RNN outperforms standard neural networks when every piece of previous information should be memorized. Each RNN cell can memorize information from all past states. 
@@ -109,7 +109,7 @@ We are going to predict the close price of common stocks using the historical pr
 * We first visualize the open, close, minimum, and maximum of prices for each stock on each day. Figure 1 is a price plot we made for BMW.  As we can see in the figure below, stock prices fluctuate a lot. It is not adequate using simple models, for example, linear regression or multiple regression, to predict the closing price based on historical data. This plot justifies the reason why we are using complex models, recurrent neural networks and XGB regressor, in our project.
 
 ![Figure 1](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure1.png)
-Figure 1. Stock Price Plot of BMW
+<div align="center">Figure 1. Stock Price Plot of BMW</div>
 
 
 
@@ -118,28 +118,28 @@ Figure 1. Stock Price Plot of BMW
 
 ![Figure 2](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure2.png)
 
-Figure 2. Normalized Stock Prices for BMW
+<div align="center">Figure 2. Normalized Stock Prices for BMW</div>
 
 
 * After we fitted the RNN models, we visualized the actual stock price and the predicted stock price for training, validation, and test sets. Though we will consider the mean square error as our evaluation metric to compare between models, visualization could help us evaluate the model intuitively. As we can see, the RNN model does a decent job in predicting the closing stock price. 
 
 ![Figure 3](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure3.png)
 
-Figure 3. RNN Evaluation Plot of BMW
+<div align="center">Figure 3. RNN Evaluation Plot of BMW</div>
 
 
 * Since the XBG regressor model involves time series analysis, it would be useful to have decomposition plots of closing price on hand. As we can see in Figure 4, there is a downward trend of stock price of BMW. Also, we can see a clear seasonality of closing price, which indicates that our XGB regressor model might be accurate. 
 
 ![Figure 4](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure4.png)
 
-Figure 4. Decomposition Plot of BMW Closing Price
+<div align="center">Figure 4. Decomposition Plot of BMW Closing Price</div>
 
 
 * We constructed five moving averages, namely, exponential moving average for nine days, simple moving averages for 5, 10, 15, and 20 days. We first visualize the pattern of all moving averages to avoid any extreme pattern or outliers before fitting the XGB regressor model. As shown in Figure 5, all moving averages are smooth. 
 
 ![Figure 5](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure5.png)
 
-Figure 5. Moving Averages Plot for BMW
+<div align="center">Figure 5. Moving Averages Plot for BMW</div>
 
 
 * We also calculated the moving average convergence divergence index and its signal. It is helpful to visualize these 2 indicators first. As we can see, both indicators are smooth.
@@ -152,7 +152,7 @@ Figure 5. Moving Averages Plot for BMW
 
 ## Results and Conclusions
 ### Evaluation Metrics and Result Validation
-* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error** to evaluation models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
+* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error (MSE)** to evaluation models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
 * We validate our model on the validation set to get the mean square error. Thus, we can avoid overfitting and other relevant problems. 
 
 ### Result Table by Industry
@@ -185,7 +185,7 @@ Figure 5. Moving Averages Plot for BMW
 | BAS  |       0.011666    |    0.005019    | 
 |  BAYN   |      0.004086     |    0.005276    | 
 
-Table 1. Result Table
+<div align="center">Table 1. Result Table</div>
 * As we can see in the table above, **the recurrent neural network model performs relatively well among all companies**. It is relatively stable, in other words, its performance does not depend on industry. Also, mean square errors of the RNN model are small numerically. For the XGB regressor  model, it performs well for certain companies and industries. For example, it performs well for the heavy industry, which is the top subsection of the table above. However, it yields large mean square error Amazon and some other companies. 
 * The reason why we choose stocks based on industries is that we strongly believe that companies within the same industry will have a similar trend in stock price. As we can see in the table above, both two models perform well for heavy industry and financial industry. It could be the case that these two industries will not be influenced dramatically by external factors. For example, a drastic economic downturn could possibly affect the shopping behavior of ordinary people. However, people still need to go to the bank and save their money in saving accounts. 
 * We would recommend using the RNN model for general purposes because it is more stable. Also, the XGB regressor model is useful for certain industries. 
@@ -229,7 +229,7 @@ Table 1. Result Table
 
 #### Table
 
-|  Stock  | MSE (RNN) | MSE(XGB Regressor) |
+<div align="center">|  Stock  | MSE (RNN) | MSE(XGB Regressor) |
 |:---:|:---:|:---:|
 |  AIR     |     0.027250         |    30.89319     | 
 |   BMW    |      0.006598     |     0.006795   | 
@@ -254,4 +254,4 @@ Table 1. Result Table
 |  |  |
 |  1COV  |    0.019278     |   1412.233   | 
 | BAS  |       0.011666    |    0.005019    | 
-|  BAYN   |      0.004086     |    0.005276    | 
+|  BAYN   |      0.004086     |    0.005276    |</div>
