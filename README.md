@@ -42,7 +42,7 @@ We are going to predict the close price of common stocks using the historical pr
 | ISIN | Mnemonic | SecurityDesc | SecurityType | Currency | SecurityID | Date | Time | StartPrice | MaxPrice | MinPrice | EndPrice | TradedVolume | NumberOfTrades |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | "DE000A2G8183" | "DWNN" | "DEUTSCHE WOHNEN SE NEUE" | "Common stock" | "EUR" | 2889217 | 2018-01-02 | 05:00 | 36.46 | 36.46 | 36.46 | 36.46 | 0 | 1 |
-| "DE000A2G82Z8" | "BNRN" | "BRENNTAG AG NA O.N. NEUE" | "Common stock" | "EUR" | 2889218 | 2018-01-02 | 52.77 | 52.77 | 52.77 | 52.77 | 0 | 1 |
+| "DE000A2G82Z8" | "BNRN" | "BRENNTAG AG NA O.N. NEUE" | "Common stock" | "EUR" | 2889218 | 2018-01-02 | 05:00 | 52.77 | 52.77 | 52.77 | 52.77 | 0 | 1 |
 | "DE000A2G83A9" | "TEGN" | "TAG IMMOBILIEN AG NEUE" | "Common stock" | "EUR" | 2889219 | 2018-01-02 | 05:00 | 15.84 | 15.84 | 15.84 | 15.84 | 0 | 1 |
 | "DE000A2G83C5" | "CAPN" | "CAPITAL STAGE AG  NEUE" | "Common stock" | "EUR" | 2889220 | 2018-01-02 | 05:00 | 6.462 | 6.462 | 6.462 | 6.462 | 0 | 1 |
 | "DE000A2G83P7" | "MTXN" | "MTU AERO ENGINES NEUE NA" | "Common stock" | "EUR" | 2889221 | 2018-01-02 | 05:00 | 149.4 | 149.4 | 149.4 | 149.4 | 0 | 1 |
