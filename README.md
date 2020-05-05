@@ -216,7 +216,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 
-## References:
+## References
 [1] https://stackoverflow.com/questions/43467597/should-i-normalize-my-features-before-throwing-them-into-rnn
 
 [2] https://www.investopedia.com/terms/c/closingprice.asp 
