@@ -129,7 +129,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 
-* Since the XBG regressor model involves time series analysis, it would be useful to have decomposition plots of closing price on hand. As we can see in Figure 4, there is a downward trend of stock price of BMW. Also, we can see a clear seasonality of closing price, which indicates that our XGB regressor model might be accurate. 
+* Since the XGB regressor model involves time series analysis, it would be useful to have decomposition plots of closing price on hand. As we can see in Figure 4, there is a downward trend of stock price of BMW. Also, we can see a clear seasonality of closing price, which indicates that our XGB regressor model might be accurate. 
 
 ![Figure 4](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure4.png)
 
@@ -158,8 +158,7 @@ We are going to predict the close price of common stocks using the historical pr
 * Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error (MSE)** to evaluate models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
 * We validate our model on the validation set to get the mean square error. Thus, we can avoid overfitting and other relevant problems. 
 
-### Result Table by Industry
-
+### Validation Error (by Industry)
 
 |  Stock  | MSE (RNN) | MSE(XGB Regressor) |
 |:---:|:---:|:---:|
