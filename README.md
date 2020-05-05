@@ -230,7 +230,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 #### Table
-<div align="center">
+<center>
 	
 |  Stock  | MSE (RNN) | MSE(XGB Regressor) |
 |:---:|:---:|:---:|
@@ -259,4 +259,4 @@ We are going to predict the close price of common stocks using the historical pr
 | BAS  |       0.011666    |    0.005019    | 
 |  BAYN   |      0.004086     |    0.005276    |
 
-</div>
+</center>
