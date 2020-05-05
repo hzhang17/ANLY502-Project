@@ -84,13 +84,13 @@ We are going to predict the close price of common stocks using the historical pr
 	* Spark: Manipulate data frames and feature engineering. 
 	* SQL (Spark SQL): Find open, close min, max prices of stocks.
 	* EMR: Make massive data process and manipulation possible and fast. 
-	* S3: Store data
+	* S3: Store data.
 	* Python Packages for data analysis and modeling: Numpy, Pandas, Tensowflow, XGBoost, matplotlib, datetime, stldecompose. 
 
 
 * Models:
 	* Recurrent Neural Network: We used recurrent neural networks to predict close prices of stocks. Inputs of the model are open prices, min prices, and max prices of each stock We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
-	* XGBoost Regressor: We use XBG regression to train the data. Inputs of the model are some financial indicators, including various moving averages and moving average convergence divergence signals. We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
+	* XGBoost Regressor: We use XGB regression to train the data. Inputs of the model are some financial indicators, including various moving averages and moving average convergence divergence signals. We split the data into three parts: 80% as the training set, 10% as the validation set, and 10% as the test set. 
 	* Since we encountered technical difficulties when implementing models on EMR, we decided to run models in our local machine, as suggested by Prof. Vaisman. 
 
 
@@ -113,12 +113,12 @@ We are going to predict the close price of common stocks using the historical pr
 
 
 
-
 * Since we normalized our data before applying the recurrent neural network model, it would be helpful to visualize normalized stock prices. Figure 2 shows the normalized stock prices of BMW. Normalized stock prices and regular stock prices share the same pattern. Thus, normalization will not alter the trend of stock prices. 
 
 ![Figure 2](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure2.png)
 
 <div align="center">Figure 2. Normalized Stock Prices of BMW</div>
+
 
 
 * After we fitted the RNN models, we visualized the actual stock price and the predicted stock price for training, validation, and test sets. Though we will consider the mean square error as our evaluation metric to compare between models, visualization could help us evaluate the model intuitively. As we can see, the RNN model does a decent job in predicting the closing stock price. 
@@ -128,6 +128,7 @@ We are going to predict the close price of common stocks using the historical pr
 <div align="center">Figure 3. RNN Evaluation Plot of BMW</div>
 
 
+
 * Since the XBG regressor model involves time series analysis, it would be useful to have decomposition plots of closing price on hand. As we can see in Figure 4, there is a downward trend of stock price of BMW. Also, we can see a clear seasonality of closing price, which indicates that our XGB regressor model might be accurate. 
 
 ![Figure 4](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure4.png)
@@ -135,11 +136,13 @@ We are going to predict the close price of common stocks using the historical pr
 <div align="center">Figure 4. Decomposition Plot of BMW Closing Price</div>
 
 
+
 * We constructed five moving averages, namely, exponential moving average for nine days, simple moving averages for 5, 10, 15, and 20 days. We first visualize the pattern of all moving averages to avoid any extreme pattern or outliers before fitting the XGB regressor model. As shown in Figure 5, all moving averages are smooth. 
 
 ![Figure 5](https://github.com/hzhang17/ANLY502-Project/blob/master/Images/Figure5.png)
 
 <div align="center">Figure 5. Moving Averages Plot of BMW</div>
+
 
 
 * We also calculated the moving average convergence divergence index and its signal. It is helpful to visualize these 2 indicators first. As we can see, both indicators are smooth.
@@ -152,7 +155,7 @@ We are going to predict the close price of common stocks using the historical pr
 
 ## Results and Conclusions
 ### Evaluation Metrics and Result Validation
-* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error (MSE)** to evaluation models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
+* Though we visualized the performance of recurrent neural network models in our visualization section, we will still use the **mean square error (MSE)** to evaluate models. Mean square error measures the average of the square errors, where each error represents the residual between the actual value and the predicted value for each observation. Thus, a smaller mean square error indicates a better model. However, we will not compare the mean square error for the same company across models because we normalized the price for the RNN model. The normalization process will lead to a smaller mean square error quantitatively. 
 * We validate our model on the validation set to get the mean square error. Thus, we can avoid overfitting and other relevant problems. 
 
 ### Result Table by Industry
@@ -225,38 +228,3 @@ We are going to predict the close price of common stocks using the historical pr
 [5] https://otexts.com/fpp2/tspatterns.html
 
 
-
-
-
-
-#### Table
-<center>
-	
-|  Stock  | MSE (RNN) | MSE(XGB Regressor) |
-|:---:|:---:|:---:|
-|  AIR     |     0.027250         |    30.89319     | 
-|   BMW    |      0.006598     |     0.006795   | 
-|  VOW3     |      0.006940     |    0.000166  | 
-|  |  |
-|  AMZ     |      0.027568     |    1389.866   | 
-|  EBA  |      0.015661       |    0.157610   | 
-| FB2A |      0.042094   |     286.2328    | 
-|  MSF |    0.015104       |   0.002160  | 
-| NFC  |    0.018897      |   174.8772     | 
-|   TWR    |      0.020783         |   70.61884     | 
-|  |  |
-| ADS |    0.053041      |    882.5451     | 
-|  CON  |      0.018633      |    1536.985 | 
-|  DAI  |      0.014024      |    170.3980    | 
-|  PHI1 |       0.029312     |      0.002827     | 
-|  SIE |     0.011042    |     53.82468    | 
-| | |
-|  ALV     |      0.031557       |      29.37602     | 
-|  CBK     |        0.005866  |    0.004714   | 
-|  DBK  |      0.004528      |    0.034729 | 
-|  |  |
-|  1COV  |    0.019278     |   1412.233   | 
-| BAS  |       0.011666    |    0.005019    | 
-|  BAYN   |      0.004086     |    0.005276    |
-
-</center>
